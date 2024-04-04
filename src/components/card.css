@@ -6,7 +6,11 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
-    background-color: #f9f9f9;
+    background-color: rgb(200, 230, 243);
+  }
+
+  .user-card:hover {
+    background-color: rgb(120, 199, 233);
   }
   
   .user-info {
@@ -19,7 +23,7 @@
   }
   
   .delete-btn {
-    background-color: #ff5c5c;
+    background-color: #fa0404;
     color: #fff;
     border: none;
     padding: 8px 16px;
@@ -28,7 +32,5 @@
     transition: background-color 0.3s;
   }
   
-  .delete-btn:hover {
-    background-color: #ff0000;
-  }
+
   
