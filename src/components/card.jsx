@@ -1,12 +1,11 @@
 import './card.css';
 
 
-const UserCard = ({ user, onDelete }) => {
-  const { name, email } = user;
+const UserCard = ({onDelete, name, email }) => {
 
   return (
     <div className="user-card">
-      <div className="user-info">
+      <div className="info">
         <p className="username">{name}</p>
         <p className="email">{email}</p>
       </div>

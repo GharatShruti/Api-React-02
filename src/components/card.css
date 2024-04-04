@@ -13,7 +13,8 @@
     background-color: rgb(120, 199, 233);
   }
   
-  .user-info {
+  .info {
+    display: flex;
     flex-grow: 1;
     margin-right: 10px;
   }

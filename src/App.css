@@ -18,3 +18,12 @@
 .user-list {
   padding: 20px;
 }
+
+.nav{
+  background-color: rgb(57, 57, 252);
+  color: #fff;
+}
+
+.user-info{
+  align-items: first baseline;
+}

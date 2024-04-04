@@ -23,33 +23,38 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <div className='left'>
-        <div className='nav'>
-          <h2>Users</h2>
-        </div>
-        <div className='user-list'>
-          {data.map(user => (
-            <div key={user.id} onClick={() => handleUserClick(user)}>
-              <UserCard
-                user={user}
-                onDelete={() => handleDelete(user.id)}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className='right'>
-        {selectedData && (
-          <div className='user-info'>
-            <h2>Selected User Information</h2>
-            <p>Name: {selectedData.name}</p>
-            <p>Email: {selectedData.email}</p>
-            {/* Add more details if needed */}
-          </div>
-        )}
-      </div>
+    <>
+    <div className='nav'>
+      <h2>Users</h2>
     </div>
+    <div className="container">
+        <div className='left'>
+
+          <div className='user-list'>
+            {data.map(user => (
+              <div key={user.id} onClick={() => handleUserClick(user)}>
+                <UserCard
+                  name={user.name}
+                  email={user.email}
+                  onDelete={() => handleDelete(user.id)} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className='right'>
+          {selectedData && (
+            <div className='user-info'>
+              <h2>User Information</h2>
+              <p>Name: {selectedData.name}</p>
+              <p>Email: {selectedData.email}</p>
+              <p>Username: {selectedData.username}</p>
+              <p>City: {selectedData.address.city}</p>
+              <p>Company: {selectedData.company.name}</p>
+              <p>Website: {selectedData.website}</p>
+            </div>
+          )}
+        </div>
+      </div></>
   );
 }
 
