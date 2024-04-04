@@ -1,11 +1,20 @@
-.App{
-  justify-content: center;
-  align-items: center;
+.container {
+  display: flex;
   height: 100vh;
-  
 }
 
-.nav{
-  width: 100%;
-  background-color: cornflowerblue;
+.left {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.right {
+  flex: 1;
+  border-left: 1px solid #ccc;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.user-list {
+  padding: 20px;
 }

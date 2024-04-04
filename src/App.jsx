@@ -1,61 +1,56 @@
-import { useState,useEffect } from 'react'
-import './App.css'
-import UserCard from './components/card'
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import UserCard from './components/card';
 
 function App() {
+  const [data, setData] = useState([]);
+  const [selectedData, setSelectedData] = useState(null);
 
-  const [data,setData] = useState([])
-  const [selecteddata,setSelectedData]=useState({})
-
-  useEffect(() =>{
+  useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
-  .then(response => response.json())
-  .then(data =>setData( data))
-  .catch(error => console.log(error))
-  },[]);
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.log(error));
+  }, []);
 
-  const handleDelete = (index) => {
-    const newData = [...data];
-    newData.splice(index, 1);
+  const handleUserClick = (user) => {
+    setSelectedData(user);
+  };
+
+  const handleDelete = (id) => {
+    const newData = data.filter(user => user.id !== id);
     setData(newData);
   };
 
-
-
   return (
-    <>
-      <div className='nav'>
-        <h2>Users</h2>
+    <div className="container">
+      <div className='left'>
+        <div className='nav'>
+          <h2>Users</h2>
+        </div>
+        <div className='user-list'>
+          {data.map(user => (
+            <div key={user.id} onClick={() => handleUserClick(user)}>
+              <UserCard
+                user={user}
+                onDelete={() => handleDelete(user.id)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-      <div className='App'>
-        {data.map((user, index) => (
-          <div key={index} onClick={() => setSelectedData(user)}>
-            <h1 style={{
-              color: 'red',
-              fontWeight: 'bold',
-              fontSize: '30px',
-            }}>{user.name}</h1>
-            <p>{user.email}</p>
+      <div className='right'>
+        {selectedData && (
+          <div className='user-info'>
+            <h2>Selected User Information</h2>
+            <p>Name: {selectedData.name}</p>
+            <p>Email: {selectedData.email}</p>
+            {/* Add more details if needed */}
           </div>
-        ))}
+        )}
       </div>
-      {selecteddata && (
-        <UserCard
-          user={selecteddata}
-          onDelete={() => {
-            const index = data.findIndex(user => user.id === selecteddata.id);
-            handleDelete(index);
-            setSelectedData(null);
-          }}
-          {...<div>
-            <h1>Selected Data</h1>
-            <p>Name: {selecteddata.name}</p>
-            <p>Email: {selecteddata.email}</p>
-          </div>}
-        />
-      )}
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
