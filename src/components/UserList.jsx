@@ -1,7 +1,7 @@
 import './card.css';
 
 
-const UserCard = ({onDelete, name, email }) => {
+const UserList = ({onDelete, name, email }) => {
 
   return (
     <div className="user-card">
@@ -14,4 +14,4 @@ const UserCard = ({onDelete, name, email }) => {
   );
 };
 
-export default UserCard;
+export default UserList;

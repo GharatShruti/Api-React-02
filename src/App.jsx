@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import UserCard from './components/card';
+import UserList from './components/UserList';
 
 function App() {
   const [data, setData] = useState([]);
@@ -33,7 +33,7 @@ function App() {
           <div className='user-list'>
             {data.map(user => (
               <div key={user.id} onClick={() => handleUserClick(user)}>
-                <UserCard
+                <UserList
                   name={user.name}
                   email={user.email}
                   onDelete={() => handleDelete(user.id)} />
